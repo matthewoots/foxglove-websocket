@@ -11,7 +11,7 @@ namespace foxglove {
 
 using LogCallback = std::function<void(WebSocketLogLevel, char const*)>;
 
-inline std::string IPAddressToString(const asio::ip::address& addr) {
+inline std::string IPAddressToString(const boost::asio::ip::address& addr) {
   if (addr.is_v6()) {
     return "[" + addr.to_string() + "]";
   }

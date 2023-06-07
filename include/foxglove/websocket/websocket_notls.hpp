@@ -4,7 +4,7 @@
 #include <websocketpp/extensions/permessage_deflate/enabled.hpp>
 #include <websocketpp/server.hpp>
 
-#include "./websocket_logging.hpp"
+#include "foxglove/websocket/websocket_logging.hpp"
 
 namespace foxglove {
 

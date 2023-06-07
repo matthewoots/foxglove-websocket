@@ -239,7 +239,7 @@ inline Server<ServerConfiguration>::~Server() {}
 
 template <typename ServerConfiguration>
 inline void Server<ServerConfiguration>::socketInit(ConnHandle hdl) {
-  std::error_code ec;
+  boost::system::error_code ec;
   _server.get_con_from_hdl(hdl)->get_raw_socket().set_option(Tcp::no_delay(true), ec);
   if (ec) {
     _server.get_elog().write(RECOVERABLE, "Failed to set TCP_NODELAY: " + ec.message());
@@ -488,7 +488,8 @@ inline void Server<ServerConfiguration>::start(const std::string& host, uint16_t
     throw std::runtime_error("WebSocket server failed to listen on port " + std::to_string(port));
   }
 
-  auto endpoint = _server.get_local_endpoint(ec);
+  boost::system::error_code ecb;
+  auto endpoint = _server.get_local_endpoint(ecb);
   if (ec) {
     throw std::runtime_error("Failed to resolve the local endpoint: " + ec.message());
   }
@@ -1138,7 +1139,7 @@ inline void Server<ServerConfiguration>::sendServiceResponse(ConnHandle clientHa
 
 template <typename ServerConfiguration>
 inline uint16_t Server<ServerConfiguration>::getPort() {
-  std::error_code ec;
+  boost::system::error_code ec;
   auto endpoint = _server.get_local_endpoint(ec);
   if (ec) {
     throw std::runtime_error("Server not listening on any port. Has it been started before?");
