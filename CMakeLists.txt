@@ -4,6 +4,8 @@ project(foxglove_websocket CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CXX_STANDARD_REQUIRED ON)
 
+find_package(Protobuf REQUIRED)
+
 add_subdirectory(dependencies/json)
 
 FILE(GLOB all_protos "${CMAKE_CURRENT_SOURCE_DIR}/foxglove_types/proto/foxglove/*.proto")

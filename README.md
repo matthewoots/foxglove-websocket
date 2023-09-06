@@ -1,7 +1,10 @@
 # FOXGLOVE_WEBSOCKET
 Building the websocket library for `foxglove`, this has been tested on `Ubuntu 20.04`
 
-# SETUP
+# Dependencies
+1. nlohmann-json: `sudo apt -y install nlohmann-json3-dev`
+
+# Setup
 ```
 git clone git@github.com:matthewoots/foxglove-websocket.git --recursive
 cd <foxglove-websocket>
